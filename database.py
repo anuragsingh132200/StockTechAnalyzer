@@ -6,24 +6,28 @@ from contextlib import asynccontextmanager
 
 from config import settings
 
-# Create async engine
-def get_database_url():
-    url = settings.DATABASE_URL
-    if "postgresql://" in url:
-        url = url.replace("postgresql://", "postgresql+asyncpg://")
-    # Remove SSL parameters that might cause issues with asyncpg
-    if "?sslmode=" in url:
-        url = url.split("?")[0]
-    return url
-
-engine = create_async_engine(
-    get_database_url(),
-    echo=False,
-    pool_size=10,
-    max_overflow=20,
-    pool_pre_ping=True,
-    pool_recycle=300
-)
+# Database configuration
+if 'sqlite' in settings.DATABASE_URL:
+    # SQLite configuration
+    SQLALCHEMY_DATABASE_URL = "sqlite+aiosqlite:///./stock_analysis.db"
+    engine = create_async_engine(
+        SQLALCHEMY_DATABASE_URL,
+        connect_args={"check_same_thread": False},
+        echo=True
+    )
+else:
+    # PostgreSQL configuration
+    SQLALCHEMY_DATABASE_URL = settings.DATABASE_URL.replace(
+        "postgresql://", "postgresql+asyncpg://"
+    )
+    engine = create_async_engine(
+        SQLALCHEMY_DATABASE_URL,
+        pool_size=10,
+        max_overflow=20,
+        pool_pre_ping=True,
+        pool_recycle=300,
+        echo=True
+    )
 
 # Create session factory
 async_session = async_sessionmaker(

@@ -3,7 +3,7 @@ from typing import Optional
 
 class Settings:
     # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://user:password@localhost:5432/stock_analysis")
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///stock_analysis.db")
     
     # JWT
     JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "your-secret-key-change-in-production")
