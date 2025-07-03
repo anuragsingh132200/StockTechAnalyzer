@@ -175,14 +175,7 @@ GET /api/indicators/rsi?symbol=MSFT&period=14
 Authorization: Bearer <your_jwt_token>
 ```
 
-## 💎 Subscription Tiers
 
-| Feature | Free | Pro | Premium |
-|---------|------|-----|---------|
-| Requests/Day | 50 | 500 | Unlimited |
-| Indicators | SMA, EMA | SMA, EMA, RSI, MACD | All Indicators |
-| Historical Data | 3 months | 1 year | Full 3 years |
-| Rate Limit | 10 req/min | 50 req/min | 100 req/min |
 
 ## 📊 Technical Indicators
 
