@@ -3,7 +3,8 @@ import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 from database import init_db, get_db
@@ -45,9 +46,43 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Stock Technical Analysis API",
-    description="High-performance API for stock technical analysis with tiered subscription model",
+    description="""
+    ## Professional Stock Technical Analysis API 📊
+
+    This API provides comprehensive technical analysis tools for stock market data with a tiered subscription model.
+
+    ### Features:
+    * **JWT Authentication** - Secure user registration and login
+    * **Technical Indicators** - SMA, EMA, RSI, MACD, Bollinger Bands
+    * **Rate Limiting** - Subscription-based daily limits (50/500/unlimited)
+    * **Data Access** - Historical data based on tier (3 months/1 year/3 years)
+    * **Caching** - Redis-powered performance optimization
+    * **Real Data** - 1168+ stock symbols with 3 years of historical data
+
+    ### Getting Started:
+    1. **Register** a new account at `/api/auth/register`
+    2. **Login** to get your JWT token at `/api/auth/login`
+    3. **Use the token** in the Authorization header: `Bearer <your-token>`
+    4. **Test endpoints** using this interactive documentation
+
+    ### Subscription Tiers:
+    - **Free**: 50 requests/day, SMA & EMA indicators, 3 months data
+    - **Pro**: 500 requests/day, SMA, EMA, RSI & MACD indicators, 1 year data  
+    - **Premium**: Unlimited requests, all indicators, 3 years data
+
+    ### Authentication:
+    Use the **Authorize** button below to add your JWT token for testing protected endpoints.
+    """,
     version="1.0.0",
-    lifespan=lifespan
+    lifespan=lifespan,
+    contact={
+        "name": "API Support",
+        "email": "support@example.com",
+    },
+    license_info={
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+    },
 )
 
 # Add CORS middleware
@@ -75,13 +110,30 @@ async def general_exception_handler(request: Request, exc: Exception):
         content={"error": "Internal server error", "error_code": "INTERNAL_ERROR"}
     )
 
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Include routers
 app.include_router(auth_router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(indicators_router, prefix="/api/indicators", tags=["Technical Indicators"])
 
 @app.get("/")
 async def root():
-    return {"message": "Stock Technical Analysis API", "version": "1.0.0"}
+    return FileResponse('static/index.html')
+
+@app.get("/api")
+async def api_info():
+    return {
+        "message": "Stock Technical Analysis API", 
+        "version": "1.0.0",
+        "documentation": "/docs",
+        "redoc": "/redoc",
+        "endpoints": {
+            "authentication": "/api/auth",
+            "indicators": "/api/indicators",
+            "health": "/health"
+        }
+    }
 
 @app.get("/health")
 async def health_check():

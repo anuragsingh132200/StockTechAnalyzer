@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Technical Analysis API - Testing Interface</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .description {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .api-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .api-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .api-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .api-card h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        .api-card p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .features {
+            margin-top: 40px;
+        }
+        .features h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Technical Analysis API</h1>
+        <div class="description">
+            <p>Professional-grade API for stock technical analysis with tiered subscription models</p>
+        </div>
+
+        <div class="api-links">
+            <div class="api-card">
+                <h3>Interactive API Documentation</h3>
+                <p>Test all endpoints with Swagger UI - like Postman but built-in!</p>
+                <a href="/docs" class="btn" target="_blank">Open Swagger UI</a>
+            </div>
+            
+            <div class="api-card">
+                <h3>ReDoc Documentation</h3>
+                <p>Beautiful, detailed API documentation with examples</p>
+                <a href="/redoc" class="btn" target="_blank">Open ReDoc</a>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>API Features</h3>
+            <div class="feature-list">
+                <div class="feature">
+                    <strong>JWT Authentication</strong><br>
+                    Secure user registration and login
+                </div>
+                <div class="feature">
+                    <strong>Technical Indicators</strong><br>
+                    SMA, EMA, RSI, MACD, Bollinger Bands
+                </div>
+                <div class="feature">
+                    <strong>Rate Limiting</strong><br>
+                    Tiered limits: 50/500/unlimited per day
+                </div>
+                <div class="feature">
+                    <strong>Smart Caching</strong><br>
+                    Redis-powered performance optimization
+                </div>
+                <div class="feature">
+                    <strong>Real Stock Data</strong><br>
+                    1168+ symbols with 3 years of history
+                </div>
+                <div class="feature">
+                    <strong>Subscription Tiers</strong><br>
+                    Free, Pro, and Premium access levels
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Built with FastAPI • PostgreSQL • Redis • Polars</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.api-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const link = card.querySelector('.btn');
+                    if (link) {
+                        window.open(link.href, '_blank');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
