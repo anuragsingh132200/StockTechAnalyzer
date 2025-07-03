@@ -1,0 +1,77 @@
+Backend Developer Assignment: Stock Technical Analysis API 
+Company: Kalpi Capital - India’s first systematic quant investing platform. 
+Position: Backend Developer 
+Submission Email: peopleops@kalpicapital.com 
+Deadline: 1 Day from receipt of this assignment 
+1. Introduction 
+Welcome to this backend development assignment! This assignment challenges you 
+to design and implement a high-performance backend API for stock technical analysis 
+using modern Python tools, focusing on efficiency, scalability and a tiered 
+subscription model. 
+2. Problem Statement 
+Develop a scalable backend API to efficiently calculate and serve various technical 
+indicators for stock data, differentiating access based on user subscription tiers (Free, 
+Pro, Premium). 
+3. Technologies to Use 
+● Primary Framework: FastAPI 
+● Language: Python 3.9+ 
+● Data Processing: Pandas/Polars(brownie points) 
+● ASGI Server: Uvicorn 
+● Database (for user/subscription data): Postgres 
+● Caching (Optional but Recommended): Consider a caching mechanism (e.g., 
+Redis). 
+4. Data Provided 
+You will work with a simulated stocks_ohlc_data.parquet file containing approximately 
+3 years of daily OHLC data for multiple stocks. The file structure is: date, symbol, 
+open, high, low, close, volume. 
+5. Core Task: Technical Indicator Calculation 
+Your API should calculate and return the following technical indicators for a given 
+stock symbol and date range (You can more technical indicators - more the better): 
+● Simple Moving Average (SMA): Configurable window periods. 
+● Exponential Moving Average (EMA): Configurable window periods. 
+● Relative Strength Index (RSI): Configurable period. 
+● Moving Average Convergence Divergence (MACD): Configurable fast, slow, 
+and signal periods. 
+● Bollinger Bands: Configurable period and standard deviation multiplier. 
+6. API Design Requirements 
+6.1. Authentication and Authorization 
+Implement a simple authentication (e.g., JWT or API Key) and authorize access based 
+on user subscription tiers. 
+6.2. Subscription Model Implementation 
+Implement tiered access: 
+● Free Tier: Max 50 requests/day. Access to SMA, EMA. Last 3 months of data. 
+● Pro Tier: Max 500 requests/day. Access to SMA, EMA, RSI, MACD. Last 1 year of 
+data. 
+● Premium Tier: Unlimited requests. Access to all specified indicators. Full 3 years 
+of data. 
+6.4. Efficiency and Scalability 
+● Data Loading Strategy: Justify your approach for loading 
+stocks_ohlc_data.parquet. 
+● Caching: Implement simple caching for frequently accessed results. 
+● Error Handling: Robust error handling with appropriate HTTP status codes. 
+● Logging: Basic logging for requests and errors. 
+● Rate Limiting: Implement tier-based rate limiting. 
+7. Architecture Design Considerations 
+In your documentation, discuss: 
+● High-level component diagram. 
+● Strategies for large data files. 
+● Security considerations. 
+● Scalability considerations. 
+8. Deliverables 
+1. Complete Codebase: Well-structured Python code, clear comments, 
+requirements.txt and a sample stocks_ohlc_data.parquet. 
+2. Architecture Design Document (Markdown/PDF): Detailed explanation of 
+architecture, justifications, scalability and subscription model. 
+3. API Documentation: Leverage FastAPI's OpenAPI/Swagger UI with examples. 
+4. Setup and Running Instructions: Clear steps to set up and run locally, including 
+testing tiers. Can use docker based deployment. 
+5. Testing Strategy (Brief): Describe your approach to testing. 
+9. Evaluation Criteria 
+● Architectural Design (30%): Scalability, efficiency, modularity. 
+● Code Quality (30%): Readability, error handling, Pythonic conventions. 
+● Correctness and Completeness (20%): Accurate indicator calculations, 
+adherence to all requirements. 
+● Documentation (15%): Clarity, comprehensiveness. 
+● Adherence to Deadline (5%): Timely submission. 
+We look forward to reviewing your submission and wish you the best of luck! 
+Kalpi Capital Team 
