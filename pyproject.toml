@@ -1,21 +1,29 @@
-[project]
-name = "repl-nix-workspace"
+[tool.poetry]
+name = "stock-tech-analyzer"
 version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.11"
-dependencies = [
-    "asyncpg>=0.30.0",
-    "bcrypt>=4.3.0",
-    "fastapi>=0.115.14",
-    "numpy>=2.3.1",
-    "pandas>=2.3.0",
-    "polars>=1.31.0",
-    "pyarrow>=20.0.0",
-    "pydantic[email]>=2.11.7",
-    "pyjwt>=2.10.1",
-    "python-jwt>=4.1.0",
-    "python-multipart>=0.0.20",
-    "redis>=6.2.0",
-    "sqlalchemy>=2.0.41",
-    "uvicorn>=0.35.0",
-]
+description = "A high-performance backend API for stock technical analysis with tiered subscription-based access"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "stock_tech_analyzer"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+asyncpg = "^0.30.0"
+bcrypt = "^4.3.0"
+fastapi = "^0.115.14"
+numpy = "^2.3.1"
+pandas = "^2.3.0"
+polars = "^1.31.0"
+pyarrow = "^20.0.0"
+pydantic = {extras = ["email"], version = "^2.11.7"}
+pyjwt = "^2.10.1"
+python-jwt = "^4.1.0"
+python-multipart = "^0.0.20"
+redis = "^6.2.0"
+sqlalchemy = "^2.0.41"
+uvicorn = "^0.35.0"
+aiosqlite = "^0.21.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
