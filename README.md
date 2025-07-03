@@ -72,7 +72,7 @@
 
 ### High-Level Architecture
 
-![High-Level Architecture](static/one.png)
+![High-Level Architecture](static/two.png)
 
 ### Data Flow
 
@@ -93,7 +93,7 @@
 
 ### Database Schema
 
-![Database Schema](static/two.png)
+![Database Schema](static/one.png)
 
 ## 🚀 Getting Started
 
