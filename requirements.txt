@@ -12,4 +12,8 @@ python-multipart>=0.0.20
 redis>=6.2.0
 sqlalchemy>=2.0.41
 uvicorn>=0.35.0
+<<<<<<< HEAD
 aiosqlite>=0.21.0
+=======
+aiosqlite
+>>>>>>> 76f699c94c1e8a25fe9b34a4f766a323e6d2edcf
